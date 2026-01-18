@@ -44,7 +44,9 @@ class Server:
         robust to deleted rows
         """
         dataset = self.indexed_dataset()
-        assert index is None or (index >= 0 and index <= max(dataset.keys()))
+        assert index is None or (
+            index >= 0 and index <= max(dataset.keys())
+        )
 
         if index is None:
             index = 0
@@ -59,7 +61,9 @@ class Server:
                 count += 1
             current_idx += 1
 
-        next_index = current_idx if current_idx <= max(dataset.keys()) else None
+        next_index = None
+        if current_idx <= max(dataset.keys()):
+            next_index = current_idx
 
         return {
             "index": index,
