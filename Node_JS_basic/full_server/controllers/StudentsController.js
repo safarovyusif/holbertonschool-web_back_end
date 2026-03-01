@@ -6,10 +6,13 @@ class StudentsController {
     readDatabase(path)
       .then((fields) => {
         let output = 'This is the list of our students\n';
-        // Sahələri (fields) əlifba sırası ilə sıralayırıq
-        const sortedFields = Object.keys(fields).sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+        const sortedFields = Object.keys(fields).sort(
+          (a, b) => a.toLowerCase().localeCompare(b.toLowerCase()),
+        );
         for (const field of sortedFields) {
-          output += `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}\n`;
+          const count = fields[field].length;
+          const list = fields[field].join(', ');
+          output += `Number of students in ${field}: ${count}. List: ${list}\n`;
         }
         response.status(200).send(output.trim());
       })
