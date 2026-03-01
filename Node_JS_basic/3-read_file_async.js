@@ -9,7 +9,7 @@ function countStudents(path) {
       }
       const lines = data.split('\n').filter((line) => line.trim() !== '');
       const students = lines.slice(1);
-      
+
       // İlk sətri ayrıca çap edirik
       console.log(`Number of students: ${students.length}`);
       let output = `Number of students: ${students.length}\n`;
