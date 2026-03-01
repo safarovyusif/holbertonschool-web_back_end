@@ -9,6 +9,9 @@ function countStudents(path) {
       }
       const lines = data.split('\n').filter((line) => line.trim() !== '');
       const students = lines.slice(1);
+      
+      // İlk sətri ayrıca çap edirik
+      console.log(`Number of students: ${students.length}`);
       let output = `Number of students: ${students.length}\n`;
 
       const fields = {};
@@ -21,12 +24,13 @@ function countStudents(path) {
       });
 
       for (const [field, names] of Object.entries(fields)) {
+        // Hər bir ixtisas üçün ayrıca çap edirik
+        console.log(`Number of students in ${field}: ${names.length}. List: ${names.join(', ')}`);
         output += `Number of students in ${field}: ${names.length}. List: ${names.join(', ')}\n`;
       }
-      
-      output = output.trim();
-      console.log(output);
-      resolve(output);
+
+      // Növbəti tapşırıqlar üçün output-u qaytarırıq
+      resolve(output.trim());
     });
   });
 }
